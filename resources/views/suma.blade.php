@@ -20,7 +20,12 @@
 @endif
 
 @if(isset($res))
-<p>Resultado Verdadero: {{ $res }}</p>
+<p>Resultado: {{ $res }}</p>
+@elseif(session('resultado'))
+{{-- En caso de que pases el dato vía session() como en tu código anterior --}}
+<p>Resultado desde sesión: {{ session('resultado') }}</p>
+@else
+<p>Aún no se ha realizado ninguna operación.</p>
 @endif
 
 @endsection
