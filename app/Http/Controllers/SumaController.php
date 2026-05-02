@@ -18,9 +18,9 @@ class SumaController extends Controller
             'numero_dos' => 'required|numeric',
         ]);
 
-        $resultado = $data['numero_uno'] + $data['numero_dos'];
+        $resultado = $data['numero_uno'] - $data['numero_dos'];
 
-        if ($data && $resultado) {
+        if ($data && isset($resultado)) {
             return view('suma', ['res' => $resultado]);
         } else {
             return back()
