@@ -12,16 +12,9 @@
     <button type="submit">Sumar</button>
 </form>
 
-{{-- Cambiamos $res por session('resultado') --}}
-@if(session('resultado') !== null)
-<section style="margin-top: 20px;">
-    <h1>Resultado Temporal: {{ session('resultado') }}</h1>
-</section>
-@endif
-
 @if(isset($res))
 <p>Resultado: {{ $res }}</p>
-@elseif(session('resultado'))
+@elseif(session()->has('resultado'))
 {{-- En caso de que pases el dato vía session() como en tu código anterior --}}
 <p>Resultado desde sesión: {{ session('resultado') }}</p>
 @else
