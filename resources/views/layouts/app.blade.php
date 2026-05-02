@@ -10,11 +10,11 @@
 </head>
 
 <body>
-    <a href="">Opción A</a>
-    <a href="">Opción B</a>
-    <a href="">Opcion C</a>
+    <a href="/">Inicio</a>
+    <a href="{{  route('suma.index') }}"">Suma</a>
+    <a href=" #">Opcion C</a>
 
-    @yield('contenido_suma')
+    @yield('contenido')
 
     <h1>Hola Mundo</h1>
 </body>

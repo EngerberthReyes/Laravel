@@ -1,6 +1,6 @@
 @extends('layouts/app')
 
-@section('contenido_suma')
+@section('contenido')
 
 <h1>Sumar dos numeros</h1>
 <form action="{{ route('suma.post') }}" method="POST" class="flex gap-2">
