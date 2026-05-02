@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <h1>Hoasdaasdasdsdsd</h1>
+    <h1>Inicio, soy una pagina de inicio</h1>
 </body>
 
 </html>
