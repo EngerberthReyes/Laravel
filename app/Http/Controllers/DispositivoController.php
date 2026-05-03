@@ -29,8 +29,9 @@ class DispositivoController extends Controller
     // Método para ver las interfaces
     public function dispositivosPost(Request $request): View|JsonResponse
     {
-        // Llamamos al modelo Interfaz que creamos con el comando anterior
-        $dispositivos = Interfaz::with('dispositivo')->get(); // 'with' carga el dueño de la interfaz
+        // Cambiamos 'with(interfaces)' por 'with(dispositivo)'
+        // Suponiendo que en tu modelo Interfaz la relación se llama 'dispositivo'
+        $interfaces = Interfaz::with('dispositivo')->get();
 
         if ($request->expectsJson() || $request->is('api/*')) {
             return response()->json([
@@ -39,6 +40,6 @@ class DispositivoController extends Controller
             ], 200);
         }
 
-        return view('dispositivos.dispositivosPost', compact('dispositivos'));
+        return view('dispositivos.interfaces', compact('interfaces'));
     }
 }

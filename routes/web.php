@@ -19,6 +19,8 @@ Route::post('/suma', [SumaController::class, 'sumar'])->name('suma.post');
 
 Route::get('/dispositivos', [DispositivoController::class, 'index'])->name('dispositivos.index');
 
+Route::get('/dispositivos/interfaces', [DispositivoController::class, 'dispositivosPost'])->name('dispositivos.dispositivosPost');
+
 Route::post('/dispositivos', [DispositivoController::class, 'dispositivosPost'])->name('dispositivos.dispositivosPost');
 
 // Route::post('/suma', [SistemaDeInterfacesController::class, 'sistemainterfaces'])->name('sistema_de_interfaces.post');
