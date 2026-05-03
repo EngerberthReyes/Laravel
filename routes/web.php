@@ -6,10 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/inicio', function () {
     return view('inicio');
 });
 
@@ -19,6 +15,12 @@ Route::post('/suma', [SumaController::class, 'sumar'])->name('suma.post');
 
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 
+// Ruta específica para ver el JSON directamente en el navegador
+// URL: http://127.0.0.1:8000/posts/data
+Route::get('posts/datos', [PostController::class, 'datos'])->name('posts.datos');
+
+// Ruta normal para las vistas (index, create, etc.)
+// URL: http://127.0.0.1:8000/posts
 Route::resource('posts', PostController::class);
 
 // Route::post('/suma', [SistemaDeInterfacesController::class, 'sistemainterfaces'])->name('sistema_de_interfaces.post');

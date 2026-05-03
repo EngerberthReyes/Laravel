@@ -2,12 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\PostResource;
 use App\Models\Post;
 use App\Services\PostService;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    // Método nuevo para ver solo los datos
+    public function datos()
+    {
+        $posts = Post::all();
+
+        // Usamos el Resource para que veas la transformación que hiciste
+        return PostResource::collection($posts);
+    }
+
     public function show(Post $post)
     {
         // Por ahora, si alguien entra a /posts/1, lo mandamos al index
@@ -15,10 +25,16 @@ class PostController extends Controller
     }
 
     // 1. LISTAR (Read)
-    public function index()
+    public function index(Request $request)
     {
         $posts = Post::all();
 
+        // Si la petición pide JSON (ej. cabecera Accept: application/json)
+        if ($request->wantsJson()) {
+            return PostResource::collection($posts);
+        }
+
+        // Si es una petición normal de navegador, devuelve la vista
         return view('posts.index', compact('posts'));
     }
 
@@ -31,9 +47,15 @@ class PostController extends Controller
     // 3. GUARDAR (Create)
     public function store(Request $request, PostService $postService)
     {
-        $postService->crearPost($request->all());
+        // Asegúrate de que el archivo app/Services/PostService.php exista
+        // y que el namespace sea correcto para evitar el error ClassLoader.
+        $post = $postService->crearPost($request->all());
 
-        return redirect()->route('posts.index');
+        if ($request->wantsJson()) {
+            return new PostResource($post);
+        }
+
+        return redirect()->route('posts.index')->with('success', 'Post creado!');
     }
 
     // 4. MOSTRAR FORMULARIO DE EDICIÓN (Read para Update)
