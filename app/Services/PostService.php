@@ -6,8 +6,8 @@ use App\Models\Post;
 
 class PostService
 {
-    public function crearPost($datos)
+    public function crearPost(array $data)
     {
-        return Post::create($datos);
+        return Post::create($data);
     }
 }

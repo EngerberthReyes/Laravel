@@ -11,8 +11,8 @@
 
 <body>
     <a href="/">Inicio</a>
-    <a href="{{  route('suma.index') }}"">Suma</a>
-    <a href=" {{ route('dispositivos.index') }}">Sistema de Interfaces</a>
+    <a href="{{  route('suma.index') }}">Suma</a>
+<a href="{{ route('posts.index') }}">Posts</a>
 
     @yield('contenido')
 

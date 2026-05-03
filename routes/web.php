@@ -17,6 +17,8 @@ Route::get('/suma', [SumaController::class, 'index'])->name('suma.index');
 
 Route::post('/suma', [SumaController::class, 'sumar'])->name('suma.post');
 
+Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+
 Route::resource('posts', PostController::class);
 
 // Route::post('/suma', [SistemaDeInterfacesController::class, 'sistemainterfaces'])->name('sistema_de_interfaces.post');
