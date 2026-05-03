@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\SistemadeInterfaces;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class SistemaDeInterfacesController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request): View|JsonResponse
     {
         $interfaces = SistemadeInterfaces::all();
 
@@ -15,7 +17,7 @@ class SistemaDeInterfacesController extends Controller
         if ($request->wantsJson() || $request->is('api/*')) {
             return response()->json([
                 'success' => true,
-                'data' => $interfaces
+                'data' => $interfaces,
             ], 200);
         }
 
@@ -23,7 +25,7 @@ class SistemaDeInterfacesController extends Controller
         return view('sistema_de_interfaces.index', compact('interfaces'));
     }
 
-    public function sistemainterfaces(Request $request)
+    public function sistemainterfaces(Request $request): View|JsonResponse
     {
         $interfaces = SistemadeInterfaces::all();
 
@@ -31,6 +33,6 @@ class SistemaDeInterfacesController extends Controller
             return response()->json($interfaces, 200);
         }
 
-        return view('sistema_de_interfaces', compact('interfaces'));
+        return view('sistema_de_interfaces.post', compact('interfaces'));
     }
 }
