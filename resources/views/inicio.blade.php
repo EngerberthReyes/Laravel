@@ -46,7 +46,7 @@
 
             try {
                 // 1. Realizar la petición
-                const respuesta = await fetch('/posts/datos', {
+                const respuesta = await fetch('http://127.0.0.1:8000/posts/datos', {
                     headers: { 'Accept': 'application/json' }
                 });
 
