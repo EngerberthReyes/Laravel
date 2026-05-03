@@ -11,7 +11,7 @@ Route::get('/', function () {
 
 Route::get('/suma', [SumaController::class, 'index'])->name('suma.index');
 
-Route::post('/suma', [SumaController::class, 'sumar'])->name('suma.post');
+Route::post('/suma', [SumaController::class, 'postSumar'])->name('suma.postSumar');
 
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 

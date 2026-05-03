@@ -11,7 +11,7 @@ class SumaController extends Controller
         return view('suma', ['res' => null]);
     }
 
-    public function sumar(Request $request)
+    public function postSumar(Request $request)
     {
         $data = $request->validate([
             'numero_uno' => 'required|numeric',
@@ -20,12 +20,7 @@ class SumaController extends Controller
 
         $resultado = $data['numero_uno'] + $data['numero_dos'];
 
-        if ($data && isset($resultado)) {
-            return view('suma', ['res' => $resultado]);
-        } else {
-            return back()
-                ->with('resultado', $resultado)
-                ->withInput();
-        }
+        // Si llegó aquí, la validación pasó, no necesitas el if ($data)
+        return view('suma', ['res' => $resultado]);
     }
 }

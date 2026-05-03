@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\SumaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -11,10 +10,6 @@ Route::get('/', function () {
 Route::get('/inicio', function () {
     return view('inicio');
 });
-
-Route::get('/suma', [SumaController::class, 'index'])->name('suma.index');
-
-Route::post('/suma', [SumaController::class, 'sumar'])->name('suma.post');
 
 // Route::post('/suma', [SistemaDeInterfacesController::class, 'sistemainterfaces'])->name('sistema_de_interfaces.post');
 

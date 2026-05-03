@@ -1,9 +1,9 @@
-@extends('layouts/app')
+@extends('layouts.app')
 
 @section('contenido')
 
 <h1>Sumar dos numeros</h1>
-<form action="{{ route('suma.post') }}" method="POST" class="flex gap-2">
+<form action="{{ route('suma.postSumar') }}" method="POST" class="flex gap-2">
     @csrf
 
     <input type="number" name="numero_uno" value="{{ old('numero_uno') }}" required>
