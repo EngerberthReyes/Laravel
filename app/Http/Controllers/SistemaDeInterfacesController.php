@@ -11,12 +11,25 @@ class SistemaDeInterfacesController extends Controller
     {
         $interfaces = SistemadeInterfaces::all();
 
-        return view('sistema_de_interfaces/index', compact('interfaces'));
+        // Si la petición pide JSON (desde API o AJAX)
+        if ($request->wantsJson() || $request->is('api/*')) {
+            return response()->json([
+                'success' => true,
+                'data' => $interfaces
+            ], 200);
+        }
+
+        // Si es una petición normal de navegador
+        return view('sistema_de_interfaces.index', compact('interfaces'));
     }
 
     public function sistemainterfaces(Request $request)
     {
         $interfaces = SistemadeInterfaces::all();
+
+        if ($request->wantsJson() || $request->is('api/*')) {
+            return response()->json($interfaces, 200);
+        }
 
         return view('sistema_de_interfaces', compact('interfaces'));
     }
