@@ -23,6 +23,7 @@
                 <tr class="bg-gray-200">
                     <th class="border p-2 text-left">ID</th>
                     <th class="border p-2 text-left">Título</th>
+                    <th class="border p-2 text-left">Contenido</th>
                     <th class="border p-2 text-left">Acciones</th>
                 </tr>
             </thead>
@@ -31,6 +32,7 @@
                 <tr class="hover:bg-gray-50">
                     <td class="border p-2">{{ $post->id }}</td>
                     <td class="border p-2">{{ $post->titulo }}</td>
+                    <td class="border p-2">{{ $post->contenido }}</td>
                     <td class="border p-2 flex gap-2">
                         <a href="{{ route('posts.edit', $post->id) }}" class="text-yellow-600 hover:underline">Editar</a>
                         <form action="{{ route('posts.destroy', $post->id) }}" method="POST" onsubmit="return confirm('¿Seguro?')">
