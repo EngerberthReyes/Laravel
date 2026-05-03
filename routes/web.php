@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DispositivoController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\SumaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -22,6 +23,8 @@ Route::get('/dispositivos', [DispositivoController::class, 'index'])->name('disp
 Route::get('/dispositivos/interfaces', [DispositivoController::class, 'dispositivosPost'])->name('dispositivos.dispositivosPost');
 
 Route::post('/dispositivos', [DispositivoController::class, 'dispositivosPost'])->name('dispositivos.dispositivosPost');
+
+Route::resource('posts', PostController::class);
 
 // Route::post('/suma', [SistemaDeInterfacesController::class, 'sistemainterfaces'])->name('sistema_de_interfaces.post');
 
