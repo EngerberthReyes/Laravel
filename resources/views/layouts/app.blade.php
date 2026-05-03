@@ -12,7 +12,7 @@
 <body>
     <a href="/">Inicio</a>
     <a href="{{  route('suma.index') }}"">Suma</a>
-    <a href=" {{ route('sistema_de_interfaces.index') }}">Sistema de Interfaces</a>
+    <a href=" {{ route('dispositivos.index') }}">Sistema de Interfaces</a>
 
     @yield('contenido')
 

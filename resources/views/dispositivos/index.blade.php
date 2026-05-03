@@ -10,10 +10,10 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($interfaces as $interfaz)
+            @foreach($dispositivos as $dispositivo)
             <tr>
-                <td>{{ $interfaz->id }}</td>
-                <td>{{ $interfaz->nombre }}</td>
+                <td>{{ $dispositivo->id }}</td>
+                <td>{{ $dispositivo->nombre }}</td>
             </tr>
             @endforeach
         </tbody>

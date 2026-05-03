@@ -1,9 +1,9 @@
 <?php
 
+use App\Http\Controllers\DispositivoController;
+use App\Http\Controllers\SumaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\SistemaDeInterfacesController;
-use App\Http\Controllers\SumaController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -17,11 +17,11 @@ Route::get('/suma', [SumaController::class, 'index'])->name('suma.index');
 
 Route::post('/suma', [SumaController::class, 'sumar'])->name('suma.post');
 
-Route::get('/sistema_de_interfaces', [SistemaDeInterfacesController::class, 'index'])->name('sistema_de_interfaces.index');
+Route::get('/dispositivos', [DispositivoController::class, 'index'])->name('dispositivos.index');
 
-Route::post('/sistema_de_interfaces', [SistemaDeInterfacesController::class, 'sistemainterfaces'])->name('sistema_de_interfaces.post');
+Route::post('/dispositivos', [DispositivoController::class, 'dispositivosPost'])->name('dispositivos.dispositivosPost');
 
-# Route::post('/suma', [SistemaDeInterfacesController::class, 'sistemainterfaces'])->name('sistema_de_interfaces.post');
+// Route::post('/suma', [SistemaDeInterfacesController::class, 'sistemainterfaces'])->name('sistema_de_interfaces.post');
 
 /*
 Route::post('/suma', function (Request $request) {
