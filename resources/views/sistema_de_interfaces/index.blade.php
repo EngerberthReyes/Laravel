@@ -1,20 +1,22 @@
-@extends('layouts/app')
+@extends('layout.app')
 
 @section('contenido')
-
-<table class="table">
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-        </tr>
-        @foreach($interfaces as $interfaz)
-        <tr>
-            <td>{{ $interfaz->id }}</td>
-            <td>{{ $interfaz->nombre }}</td>
-        </tr>
-        @endforeach
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($interfaces as $interfaz)
+            <tr>
+                <td>{{ $interfaz->id }}</td>
+                <td>{{ $interfaz->nombre }}</td>
+            </tr>
+            @endforeach
+        </tbody>
     </table>
-</table>
-
+</div>
 @endsection
