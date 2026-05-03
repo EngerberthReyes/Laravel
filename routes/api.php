@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\DispositivoController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\SumaController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,5 +23,4 @@ Route::get('/suma', [SumaController::class, 'index']);
 // El método POST es el principal para procesar datos
 Route::post('/suma', [SumaController::class, 'sumar']);
 
-// Rutas de Interfaces
-Route::get('/dispositivos', [DispositivoController::class, 'index']);
+Route::resource('posts', PostController::class);
