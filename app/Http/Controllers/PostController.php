@@ -12,7 +12,7 @@ class PostController extends Controller
     // Método nuevo para ver solo los datos
     public function datos()
     {
-        $posts = Post::all();
+        $posts = Post::latest()->get();
 
         // Usamos el Resource para que veas la transformación que hiciste
         return PostResource::collection($posts);
@@ -27,28 +27,27 @@ class PostController extends Controller
     // 1. LISTAR (Read)
     public function index(Request $request)
     {
-        $posts = Post::all();
+        $posts = Post::latest()->get();
 
         // Si la petición pide JSON (ej. cabecera Accept: application/json)
-        if ($request->wantsJson()) {
-            return PostResource::collection($posts);
-        }
-
-        // Si es una petición normal de navegador, devuelve la vista
-        return view('posts.index', compact('posts'));
+    if ($request->wantsJson()) {
+        return PostResource::collection($posts);
     }
 
-    // 2. MOSTRAR FORMULARIO DE CREACIÓN
+    return view('posts.index', compact('posts'));
+    }
+
+    // 2. Mostrar Formulario de Creación.
     public function create()
     {
         return view('posts.create');
     }
 
-    // 3. GUARDAR (Create)
+    // 3. Guardar la Información en la Base de Datos (Create)
+
     public function store(Request $request, PostService $postService)
     {
-        // Asegúrate de que el archivo app/Services/PostService.php exista
-        // y que el namespace sea correcto para evitar el error ClassLoader.
+
         $post = $postService->crearPost($request->all());
 
         if ($request->wantsJson()) {
@@ -56,27 +55,41 @@ class PostController extends Controller
         }
 
         return redirect()->route('posts.index')->with('success', 'Post creado!');
+    
     }
 
-    // 4. MOSTRAR FORMULARIO DE EDICIÓN (Read para Update)
-    public function edit(Post $post) // <--- Esto busca el ID automáticamente
+    // 4. Mostrar Formulario de Edición.
+
+    public function edit(Post $post)
     {
         return view('posts.edit', compact('post'));
     }
 
-    // 5. ACTUALIZAR (Update)
+    // 5. Actualizar (Update).
+
     public function update(Request $request, Post $post)
     {
+        
         $post->update($request->all());
 
-        return redirect()->route('posts.index')->with('success', 'Post actualizado!');
+        $id = str_pad($post->id, 2, "0", STR_PAD_LEFT);
+
+        return redirect()->route('posts.index')
+            ->with("success", "El Post con ID {$id} Fue Actualizado Con Éxito.");
+
     }
 
-    // 6. ELIMINAR (Delete)
-    public function destroy(Post $post)
+    // 6. Eliminar (Delete).
+
+    public function destroy(Request $request, Post $post)
     {
-        $post->delete();
 
-        return redirect()->route('posts.index')->with('success', 'Post eliminado!');
-    }
+    $post->delete($request->all());
+
+    $id = str_pad($post->id, 2, "0", STR_PAD_LEFT);
+
+    return redirect()->route('posts.index')->with("success", "El Post con ID {$id} Fue Eliminado.");
+
+}
+
 }
