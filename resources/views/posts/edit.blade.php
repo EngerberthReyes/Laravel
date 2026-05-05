@@ -23,7 +23,7 @@
         </section>
 
         <section class="flex gap-4 pt-2">
-            <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-500 transition shadow-lg">
+            <button type="submit" class="bg-blue-600 text-white px-6 cursor-pointer py-2 rounded hover:bg-blue-500 transition shadow-lg">
                 Actualizar
             </button>
             <a href="{{ route('posts.index') }}" class="bg-gray-700 text-gray-300 px-6 py-2 rounded hover:bg-gray-600 transition text-center">

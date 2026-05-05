@@ -29,7 +29,7 @@
                         <form action="{{ route('posts.destroy', $post->id) }}" method="POST" onsubmit="return confirm('¿Eliminar Este Post?')">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="text-red-500 hover:text-red-400 transition">Eliminar</button>
+                            <button type="submit" class="text-red-500 hover:text-red-400 cursor-pointer transition">Eliminar</button>
                         </form>
                     </section>
                 </td>
