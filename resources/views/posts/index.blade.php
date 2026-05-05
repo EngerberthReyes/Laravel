@@ -24,8 +24,6 @@
                             <td class="p-4 text-gray-500 font-mono whitespace-nowrap">
                                 {{ str_pad($post->id, 2, "0", STR_PAD_LEFT) }}
                             </td>
-                            
-                            {{-- Mantenemos un min-width para que no se vea colapsado si el texto es muy corto --}}
                             <td class="p-4 text-white font-medium min-w-[150px] max-w-[250px] break-words">
                                 {{ $post->titulo }}
                             </td>
