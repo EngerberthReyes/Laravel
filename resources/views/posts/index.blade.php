@@ -26,7 +26,7 @@
                 <td class="border border-gray-700 p-2">
                     <section class="flex gap-3">
                         <a href="{{ route('posts.edit', $post->id) }}" class="text-yellow-500 hover:text-yellow-400 transition">Editar</a>
-                        <form action="{{ route('posts.destroy', $post->id) }}" method="POST" onsubmit="return confirm('¿Eliminar Este Post?')">
+                        <form action="{{ route('posts.destroy', $post->id) }}" method="POST" onsubmit="return confirm('¿Desea Eliminar Este Post?')">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="text-red-500 hover:text-red-400 cursor-pointer transition">Eliminar</button>

@@ -5,6 +5,9 @@
 
     <form action="{{ route('posts.update', $post->id) }}" method="POST" class="space-y-4">
         @csrf
+
+        {{-- Comportate Como un Método Put en lugar de un POST --}}
+
         @method('PUT')
         
         <section>
