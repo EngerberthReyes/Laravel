@@ -24,15 +24,18 @@
 
     <x-slot:scripts>
     <script>
-        async function cargarPosts() {
+        const cargarPosts = async () => {
             const statusSection = document.getElementById('status');
             const container = document.getElementById('tabla-container');
             const cuerpoTabla = document.getElementById('contenido-tabla');
 
             try {
-                const respuesta = await fetch('http://127.0.0.1:8000/posts/datos', {
-                    headers: { 'Accept': 'application/json' }
-                });
+                const respuesta = await fetch('/posts/datos', {
+    headers: { 
+        'Accept': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest' 
+    }
+});
 
                 console.log(respuesta)
 

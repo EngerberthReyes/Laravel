@@ -24,7 +24,7 @@ class PostController extends Controller
             return PostResource::collection($posts);
         }
 
-        return view('posts.index', compact('posts'));
+        return view('index', compact('posts'));
     }
 
     public function create()
@@ -40,7 +40,7 @@ class PostController extends Controller
             return new PostResource($post);
         }
 
-        return redirect()->route('posts.index')
+        return redirect()->route('index')
             ->with('exito', '¡Post creado con éxito!');
     }
 
@@ -55,7 +55,7 @@ class PostController extends Controller
 
         $id = str_pad($post->id, 2, "0", STR_PAD_LEFT);
 
-        return redirect()->route('posts.index')
+        return redirect()->route('index')
             ->with("exito", "El Post con ID {$id} fue actualizado con éxito.");
     }
 
@@ -64,12 +64,12 @@ class PostController extends Controller
         $id = str_pad($post->id, 2, "0", STR_PAD_LEFT);
         $post->delete();
 
-        return redirect()->route('posts.index')
+        return redirect()->route('index')
             ->with("exito", "El Post con ID {$id} fue eliminado.");
     }
 
     public function show(Post $post)
     {
-        return redirect()->route('posts.index');
+        return redirect()->route('index');
     }
 }

@@ -15,5 +15,8 @@
         {{ $slot }}
         
     </section>
+
+    {{ $scripts }}
+
 </body>
 </html>

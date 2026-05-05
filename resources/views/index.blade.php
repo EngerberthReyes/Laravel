@@ -1,5 +1,5 @@
 <x-layout>
-    <x-slot:titulo>Listado de Posts</x-slot>
+    <x-slot:titulo>Listado de Posts</x-slot:titulo>
     <section class="flex flex-col items-center">
         <section class="w-full max-w-4xl flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
             <h1 class="text-2xl font-bold text-white tracking-tight">Listado de Posts</h1>
@@ -54,4 +54,6 @@
             </section>
         </section>
     </section>
+       <x-slot:scripts>
+    </x-slot:scripts>
 </x-layout>

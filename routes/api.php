@@ -2,14 +2,15 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 
-Route::get('/', function () {
-    return view('welcome');
+// 1. La ruta que carga la página (el contenedor)
+Route::get('/cargar_posts', function () {
+    return view('cargar_posts'); 
 });
 
-Route::get('/inicio', function () {
-    return view('inicio');
-});
+Route::get('posts/datos', [PostController::class, 'datos'])->name('posts.datos');
+
 
 // Route::post('/suma', [SistemaDeInterfacesController::class, 'sistemainterfaces'])->name('sistema_de_interfaces.post');
 

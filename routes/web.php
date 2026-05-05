@@ -5,15 +5,15 @@ use App\Http\Controllers\SumaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('inicio');
+Route::get('/', [PostController::class, 'index'])->name('index');
+
+Route::get('/cargar_posts', function () {
+    return view('cargar_posts'); 
 });
 
 Route::get('/suma', [SumaController::class, 'index'])->name('suma.index');
 
 Route::post('/suma', [SumaController::class, 'postSumar'])->name('suma.postSumar');
-
-Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 
 // Ruta específica para ver el JSON directamente en el navegador
 // URL: http://127.0.0.1:8000/posts/data

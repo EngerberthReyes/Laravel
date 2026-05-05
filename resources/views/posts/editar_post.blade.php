@@ -1,6 +1,5 @@
 <x-layout>
-    <x-slot:titulo>Editar Post</x-slot>
-
+    <x-slot:titulo>Editar Post</x-slot:titulo>
     <h1 class="text-2xl font-bold mb-6 text-white border-b border-gray-700 pb-2">Editar Post #{{ $post->id }}</h1>
 
     <form action="{{ route('posts.update', $post->id) }}" method="POST" class="space-y-4">
@@ -29,9 +28,11 @@
             <button type="submit" class="bg-blue-600 text-white px-6 cursor-pointer py-2 rounded hover:bg-blue-500 transition shadow-lg">
                 Actualizar
             </button>
-            <a href="{{ route('posts.index') }}" class="bg-gray-700 text-gray-300 px-6 py-2 rounded hover:bg-gray-600 transition text-center">
+            <a href="{{ route('index') }}" class="bg-gray-700 text-gray-300 px-6 py-2 rounded hover:bg-gray-600 transition text-center">
                 Cancelar
             </a>
         </section>
     </form>
+        <x-slot:scripts>
+    </x-slot:scripts>
 </x-layout>
