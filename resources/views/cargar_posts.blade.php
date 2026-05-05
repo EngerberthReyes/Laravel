@@ -31,17 +31,15 @@
 
             try {
                 const respuesta = await fetch('/posts/datos', {
-    headers: { 
-        'Accept': 'application/json',
-        'X-Requested-With': 'XMLHttpRequest' 
-    }
-});
-
-                console.log(respuesta)
+                    headers: { 
+                        'Accept': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest' 
+                    }
+                });
 
                 if (!respuesta.ok) throw new Error(`Error: ${respuesta.status}`);
 
-                const posts = await respuesta.json(); // Eliminamos el .data aquí
+                const posts = await respuesta.json();
 
                 if (!Array.isArray(posts) || posts.length === 0) {
                     statusSection.innerText = "No hay posts disponibles.";
