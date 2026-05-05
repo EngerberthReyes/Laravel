@@ -8,8 +8,6 @@
 
     <form action="{{ route('posts.store') }}" method="POST" class="space-y-6">
         @csrf
-        
-        {{-- Campo Título --}}
         <section>
             <label for="titulo" class="block text-sm font-medium text-gray-300 mb-2">Título del Post</label>
             <input 
@@ -24,8 +22,6 @@
                 <span class="text-red-400 text-sm mt-1 block italic">{{ $message }}</span> 
             @enderror
         </section>
-
-        {{-- Campo Contenido --}}
         <section>
             <label for="contenido" class="block text-sm font-medium text-gray-300 mb-2">Contenido</label>
             <textarea 
@@ -39,8 +35,6 @@
                 <span class="text-red-400 text-sm mt-1 block italic">{{ $message }}</span> 
             @enderror
         </section>
-
-        {{-- Botones de Acción --}}
         <section class="flex items-center gap-4 pt-4 border-t border-gray-700">
             <button type="submit" class="bg-blue-600 text-white px-8 py-2.5 rounded-lg font-semibold hover:bg-blue-500 transition shadow-lg active:transform active:scale-95">
                 Publicar Post
