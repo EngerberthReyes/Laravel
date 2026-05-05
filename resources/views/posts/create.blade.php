@@ -1,5 +1,5 @@
 <x-layout>
-    <x-slot:title>Crear Nuevo Post</x-slot>
+    <x-slot:titulo>Crear Nuevo Post</x-slot>
 
     <section class="mb-6">
         <h1 class="text-2xl font-bold text-white border-b border-gray-700 pb-2">Crear Nuevo Post</h1>

@@ -1,5 +1,5 @@
 <x-layout>
-    <x-slot:title>Editar Post</x-slot>
+    <x-slot:titulo>Editar Post</x-slot>
 
     <h1 class="text-2xl font-bold mb-6 text-white border-b border-gray-700 pb-2">Editar Post #{{ $post->id }}</h1>
 

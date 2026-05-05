@@ -1,5 +1,5 @@
 <x-layout>
-    <x-slot:title>Listado de Posts</x-slot>
+    <x-slot:titulo>Listado de Posts</x-slot>
 
     <section class="flex justify-between items-center mb-6">
         <h1 class="text-2xl font-bold text-white">Listado de Posts</h1>
