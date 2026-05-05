@@ -6,8 +6,19 @@ use App\Models\Post;
 
 class PostService
 {
-    public function crearPost(array $data)
+    /**
+     * Crear un nuevo post.
+     */
+    public function crearPost(array $data): Post
     {
         return Post::create($data);
+    }
+
+    /**
+     * Actualizar un post existente.
+     */
+    public function editarPost(Post $post, array $data): bool
+    {
+        return $post->update($data);
     }
 }

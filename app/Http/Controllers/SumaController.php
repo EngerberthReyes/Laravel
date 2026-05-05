@@ -20,7 +20,6 @@ class SumaController extends Controller
 
         $resultado = $data['numero_uno'] + $data['numero_dos'];
 
-        // Si llegó aquí, la validación pasó, no necesitas el if ($data)
-        return view('suma', ['res' => $resultado]);
+        return view('suma', ['res' => $resultado, "titulo" => "Una Suma Normal"]);
     }
 }

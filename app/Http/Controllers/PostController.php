@@ -5,91 +5,71 @@ namespace App\Http\Controllers;
 use App\Http\Resources\PostResource;
 use App\Models\Post;
 use App\Services\PostService;
+use App\Http\Requests\PostRequest; 
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    // Método nuevo para ver solo los datos
     public function datos()
     {
         $posts = Post::latest()->get();
-
-        // Usamos el Resource para que veas la transformación que hiciste
         return PostResource::collection($posts);
     }
 
-    public function show(Post $post)
-    {
-        // Por ahora, si alguien entra a /posts/1, lo mandamos al index
-        return redirect()->route('posts.index');
-    }
-
-    // 1. LISTAR (Read)
     public function index(Request $request)
     {
         $posts = Post::latest()->get();
 
-        // Si la petición pide JSON (ej. cabecera Accept: application/json)
-    if ($request->wantsJson()) {
-        return PostResource::collection($posts);
+        if ($request->wantsJson()) {
+            return PostResource::collection($posts);
+        }
+
+        return view('posts.index', compact('posts'));
     }
 
-    return view('posts.index', compact('posts'));
-    }
-
-    // 2. Mostrar Formulario de Creación.
     public function create()
     {
         return view('posts.create');
     }
 
-    // 3. Guardar la Información en la Base de Datos (Create)
-
-    public function store(Request $request, PostService $postService)
+    public function store(PostRequest $request, PostService $postService)
     {
-
-        $post = $postService->crearPost($request->all());
+        $post = $postService->crearPost($request->validated());
 
         if ($request->wantsJson()) {
             return new PostResource($post);
         }
 
-        return redirect()->route('posts.index')->with('success', 'Post creado!');
-    
+        return redirect()->route('posts.index')
+            ->with('exito', '¡Post creado con éxito!');
     }
-
-    // 4. Mostrar Formulario de Edición.
 
     public function edit(Post $post)
     {
         return view('posts.edit', compact('post'));
     }
 
-    // 5. Actualizar (Update).
-
-    public function update(Request $request, Post $post)
+    public function update(PostRequest $request, Post $post, PostService $postService)
     {
-        
-        $post->update($request->all());
+        $postService->editarPost($post, $request->validated());
 
         $id = str_pad($post->id, 2, "0", STR_PAD_LEFT);
 
         return redirect()->route('posts.index')
-            ->with("success", "El Post con ID {$id} Fue Actualizado Con Éxito.");
-
+            ->with("exito", "El Post con ID {$id} fue actualizado con éxito.");
     }
 
-    // 6. Eliminar (Delete).
-
-    public function destroy(Request $request, Post $post)
+    public function destroy(Post $post)
     {
+        $id = str_pad($post->id, 2, "0", STR_PAD_LEFT);
+        $post->delete();
 
-    $post->delete($request->all());
+        return redirect()->route('posts.index')
+            ->with("exito", "El Post con ID {$id} fue eliminado.");
+    }
 
-    $id = str_pad($post->id, 2, "0", STR_PAD_LEFT);
-
-    return redirect()->route('posts.index')->with("success", "El Post con ID {$id} Fue Eliminado.");
-
-}
-
+    public function show(Post $post)
+    {
+        return redirect()->route('posts.index');
+    }
 }

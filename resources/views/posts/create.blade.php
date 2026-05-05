@@ -1,33 +1,54 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Crear Post</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-100 p-8">
-    <div class="max-w-xl mx-auto bg-white p-6 rounded-lg shadow-md">
-        <h1 class="text-2xl font-bold mb-6">Nuevo Post</h1>
+<x-layout>
+    <x-slot:title>Crear Nuevo Post</x-slot>
 
-        <form action="{{ route('posts.store') }}" method="POST">
-            @csrf
-            <div class="mb-4">
-                <label class="block text-gray-700">Título:</label>
-                <input type="text" name="titulo" class="w-full border p-2 rounded @error('titulo') border-red-500 @enderror" value="{{ old('titulo') }}">
-                @error('titulo') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-            </div>
+    <section class="mb-6">
+        <h1 class="text-2xl font-bold text-white border-b border-gray-700 pb-2">Crear Nuevo Post</h1>
+        <p class="text-gray-400 mt-2">Completa los campos para publicar una nueva entrada.</p>
+    </section>
 
-            <div class="mb-4">
-                <label class="block text-gray-700">Contenido:</label>
-                <textarea name="contenido" rows="5" class="w-full border p-2 rounded @error('contenido') border-red-500 @enderror">{{ old('contenido') }}</textarea>
-                @error('contenido') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-            </div>
+    <form action="{{ route('posts.store') }}" method="POST" class="space-y-6">
+        @csrf
+        
+        {{-- Campo Título --}}
+        <section>
+            <label for="titulo" class="block text-sm font-medium text-gray-300 mb-2">Título del Post</label>
+            <input 
+                type="text" 
+                name="titulo" 
+                id="titulo"
+                placeholder="Escribe un título llamativo..."
+                class="w-full bg-gray-900 border border-gray-700 p-2.5 rounded-lg text-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition @error('titulo') border-red-500 @enderror" 
+                value="{{ old('titulo') }}"
+            >
+            @error('titulo') 
+                <span class="text-red-400 text-sm mt-1 block italic">{{ $message }}</span> 
+            @enderror
+        </section>
 
-            <div class="flex gap-4">
-                <button type="submit" class="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600">Guardar</button>
-                <a href="{{ route('posts.index') }}" class="bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-600 text-center">Cancelar</a>
-            </div>
-        </form>
-    </div>
-</body>
-</html>
+        {{-- Campo Contenido --}}
+        <section>
+            <label for="contenido" class="block text-sm font-medium text-gray-300 mb-2">Contenido</label>
+            <textarea 
+                name="contenido" 
+                id="contenido" 
+                rows="6" 
+                placeholder="¿De qué trata este post?"
+                class="w-full resize-none bg-gray-900 border border-gray-700 p-2.5 rounded-lg text-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition @error('contenido') border-red-500 @enderror"
+            >{{ old('contenido') }}</textarea>
+            @error('contenido') 
+                <span class="text-red-400 text-sm mt-1 block italic">{{ $message }}</span> 
+            @enderror
+        </section>
+
+        {{-- Botones de Acción --}}
+        <section class="flex items-center gap-4 pt-4 border-t border-gray-700">
+            <button type="submit" class="bg-blue-600 text-white px-8 py-2.5 rounded-lg font-semibold hover:bg-blue-500 transition shadow-lg active:transform active:scale-95">
+                Publicar Post
+            </button>
+            
+            <a href="{{ route('posts.index') }}" class="text-gray-400 hover:text-white px-4 py-2.5 transition text-sm font-medium">
+                Cancelar y volver
+            </a>
+        </section>
+    </form>
+</x-layout>
