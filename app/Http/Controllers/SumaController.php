@@ -8,7 +8,7 @@ class SumaController extends Controller
 {
     public function index(Request $request)
     {
-        return view('suma', ['res' => null]);
+        return view('suma', ['res' => null, "titulo" => "Una Suma Normal"]);
     }
 
     public function postSumar(Request $request)
