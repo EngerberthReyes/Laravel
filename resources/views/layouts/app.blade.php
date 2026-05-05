@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $titulo ?? 'Suma' }} {{-- @yield('titulo', 'Gestión de Posts') --}}</title>
+    <link rel="shortcut icon" href="{{ asset('Imagenes/Pergamino.png') }}" type="image/png">
     <script src="{{ asset('js/tailwindcss.js') }}"></script>
     @stack('styles')
 </head>
